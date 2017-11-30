@@ -1,0 +1,16 @@
+<!--
+<div class="jumbotron"> 
+    <h1>Brasajava</h1>
+    <h2>My own explore project</h2>
+</div>
+-->
+  <div class="card card-primary" *ngFor="let musica of musics">
+      <div class="card-header bg-primary">
+          {{musica.name}}
+      </div>
+  
+      <div class="card-body" *ngFor="let part of musica.musicParts">
+        <h4>{{part.musicPart}}</h4>
+      </div>
+  </div>
+
