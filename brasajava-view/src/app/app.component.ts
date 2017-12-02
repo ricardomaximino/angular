@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CapoeiraMusicService } from './capoeira-music/capoeira-music.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +9,6 @@ export class AppComponent {
   title = 'app';
   message = 'Today is a good powering day.';
 
-  constructor(private server: CapoeiraMusicService) { }
+  constructor() { }
 
-  getServer() {
-    this.server.getFromService();
-  }
-  getSpring() {
-    this.server.getSpring();
-  }
 }

@@ -1,3 +1,7 @@
-<p>
-  capoeira-member works!
-</p>
+<h1>Hello {{member.capoeiraName}}</h1>
+<h2>{{member.group}}</h2>
+<ul>
+    <li *ngFor="let group of member.groups">{{group}}</li>
+</ul>
+<p>{{member.description}}</p>
+<a href="#">{{member.image}}</a>
