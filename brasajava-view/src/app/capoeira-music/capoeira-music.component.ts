@@ -5,6 +5,7 @@ import { CapoeiraMusicService } from '../services/capoeira-music.service';
 import { CapoeiraMusic } from './capoeira-music';
 import { CommonError } from '../common/common-error';
 import { CommonNotFoundError } from '../common/common-not-found-error';
+import { CapoeiraMusicClientService } from '../services/capoeira-music-client.service';
 
 @Component({
   selector: 'app-capoeira-music',
@@ -16,13 +17,21 @@ export class CapoeiraMusicComponent implements OnInit {
   musics: CapoeiraMusic[];
   deleted: boolean;
 
-  constructor(private service: CapoeiraMusicService) {
+  constructor(private service: CapoeiraMusicService, private serve: CapoeiraMusicClientService) {
 
   }
 
   ngOnInit() {
     this.getById(1);
     this.getAll();
+    this.test();
+  }
+
+  test() {
+    console.log('Controller');
+    this.serve.getAll().subscribe(data => {
+      console.log(data);
+    });
   }
 
   create(music) {
@@ -30,7 +39,6 @@ export class CapoeiraMusicComponent implements OnInit {
     .subscribe(
       response => {
         this.music = response.json();
-        console.log(this.musics);
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {
@@ -76,7 +84,6 @@ export class CapoeiraMusicComponent implements OnInit {
     .subscribe(
       response => {
         this.musics = response.json();
-        console.log(this.musics);
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {

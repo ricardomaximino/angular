@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
+import { NgForm } from '@angular/forms';
+
 
 import { CapoeiraMemberService } from '../services/capoeira-member.service';
 import { CapoeiraMember } from './capoeira-member';
+import { CommonError } from '../common/common-error';
+import { CommonNotFoundError } from '../common/common-not-found-error';
 
 @Component({
     selector: 'app-capoeira-member',
@@ -24,5 +28,30 @@ export class CapoeiraMemberComponent implements OnInit {
                 member => {
                     this.member = member.json();
                 });
+                this.getAll();
+    }
+    create(member) {
+        this.service.create(member)
+            .subscribe(
+                response => {
+                    this.member = member.json();
+                },
+                (error: CommonError) => {
+                    if (error instanceof CommonNotFoundError) {
+                        alert('Not Found Error');
+                    } else {
+                        Observable.throw(error);
+                    }
+                });
+    }
+
+    getAll() {
+        this.service.getAll().subscribe(response => {
+            this.members = response.json();
+        });
+    }
+
+    log(x: NgForm) {
+        console.log(x.dirty);
     }
 }
