@@ -18,6 +18,7 @@ import { LoggedUserService } from './services/logged-user.service';
 import { ListComponent } from './list/list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CapoeiraMemberComponent,
     ListComponent,
     NavBarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
