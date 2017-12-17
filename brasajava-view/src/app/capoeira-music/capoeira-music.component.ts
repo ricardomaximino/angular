@@ -6,8 +6,6 @@ import { CapoeiraMusic } from './capoeira-music';
 import { CommonError } from '../common/common-error';
 import { CommonNotFoundError } from '../common/common-not-found-error';
 import { CapoeiraMusicClientService } from '../services/capoeira-music-client.service';
-import { User } from '../common/common-user';
-import { LoggedUserService } from '../services/logged-user.service';
 
 @Component({
   selector: 'app-capoeira-music',
@@ -18,12 +16,8 @@ export class CapoeiraMusicComponent implements OnInit {
   music: CapoeiraMusic;
   musics: CapoeiraMusic[];
   deleted: boolean;
-  user: User;
 
-  constructor(
-    private service: CapoeiraMusicService,
-    private serve: CapoeiraMusicClientService,
-    private loggedUserService: LoggedUserService) {
+  constructor(private service: CapoeiraMusicService, private serve: CapoeiraMusicClientService) {
 
   }
 
@@ -31,9 +25,6 @@ export class CapoeiraMusicComponent implements OnInit {
     this.getById(1);
     this.getAll();
     this.test();
-    this.loggedUserService.getUser().subscribe(user => {
-      this.user = user;
-    });
   }
 
   test() {

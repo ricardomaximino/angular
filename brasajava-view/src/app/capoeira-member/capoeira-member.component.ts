@@ -8,8 +8,6 @@ import { CapoeiraMemberService } from '../services/capoeira-member.service';
 import { CapoeiraMember } from './capoeira-member';
 import { CommonError } from '../common/common-error';
 import { CommonNotFoundError } from '../common/common-not-found-error';
-import { LoggedUserService } from '../services/logged-user.service';
-import { User } from '../common/common-user';
 
 @Component({
     selector: 'app-capoeira-member',
@@ -20,15 +18,11 @@ export class CapoeiraMemberComponent implements OnInit {
     name = 'Ricardo Maximino';
     member: CapoeiraMember;
     members: CapoeiraMember[];
-    user: User;
-    constructor(private service: CapoeiraMemberService, private loggedUserService: LoggedUserService) {
+    constructor(private service: CapoeiraMemberService) {
 
     }
 
     ngOnInit() {
-        this.loggedUserService.getUser().subscribe(user => {
-            this.user = user;
-        });
         this.service.getById(1)
             .subscribe(
                 member => {
