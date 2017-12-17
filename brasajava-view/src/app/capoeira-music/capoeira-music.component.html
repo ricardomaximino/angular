@@ -1,11 +1,17 @@
 
-<div class="card card-primary" *ngFor="let musica of musics">
-      <div class="card-header bg-primary">
-        {{musica.name}}
-      </div>
+<h1>{{user.name}}</h1>
+<div class="row" *ngIf="!musics">
+  <img class="center" src="../assets/images/waiting.gif">
+</div>
+<div *ngIf="musics">
+  <div class="card card-primary" *ngFor="let musica of musics">
+    <div class="card-header bg-primary">
+      {{musica.name}}
+    </div>
   
-      <div class="card-body"  >
-        <p *ngFor="let part of musica.musicParts">{{part.musicPart}}</p>
-      </div>
+    <div class="card-body"  >
+      <p *ngFor="let part of musica.musicParts">{{part.musicPart}}</p>
+    </div>
   </div>
+</div>
 
