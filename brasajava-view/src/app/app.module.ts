@@ -15,13 +15,21 @@ import { CapoeiraMemberComponent } from './capoeira-member/capoeira-member.compo
 import { CapoeiraMusicService } from './services/capoeira-music.service';
 import { CapoeiraMemberService } from './services/capoeira-member.service';
 import { CapoeiraMusicClientService } from './services/capoeira-music-client.service';
+import { LoggedUserService } from './services/logged-user.service';
+import { ListComponent } from './list/list.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+>>>>>>> parent of 08419c4... Starting login-component
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CapoeiraMusicComponent,
-    CapoeiraMemberComponent
+    CapoeiraMemberComponent,
+    ListComponent,
+    NavBarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
