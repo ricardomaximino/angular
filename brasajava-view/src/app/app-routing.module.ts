@@ -3,8 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import { CapoeiraMusicComponent } from './capoeira-music/capoeira-music.component';
 import { AppComponent } from './app.component';
 import { CapoeiraMemberComponent } from './capoeira-member/capoeira-member.component';
-import { ListComponent } from './list/list.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
     {path: 'music', component: CapoeiraMusicComponent},

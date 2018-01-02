@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorHandler } from '@angular/core';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,24 +15,17 @@ import { CapoeiraMemberComponent } from './capoeira-member/capoeira-member.compo
 import { CapoeiraMusicService } from './services/capoeira-music.service';
 import { CapoeiraMemberService } from './services/capoeira-member.service';
 import { CapoeiraMusicClientService } from './services/capoeira-music-client.service';
-import { LoggedUserService } from './services/logged-user.service';
-import { ListComponent } from './list/list.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
->>>>>>> parent of 08419c4... Starting login-component
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CapoeiraMusicComponent,
-    CapoeiraMemberComponent,
-    ListComponent,
-    NavBarComponent,
-    NotFoundComponent
+    CapoeiraMemberComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
     HttpClientModule,
     HttpClientModule,

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { CapoeiraMusicService } from '../services/capoeira-music.service';
 import { CapoeiraMusic } from './capoeira-music';
 import { CommonError } from '../common/common-error';
 import { CommonNotFoundError } from '../common/common-not-found-error';
 import { CapoeiraMusicClientService } from '../services/capoeira-music-client.service';
+import { MusicPart } from './capoeira-music-part';
 
 @Component({
   selector: 'app-capoeira-music',
@@ -16,29 +16,35 @@ export class CapoeiraMusicComponent implements OnInit {
   music: CapoeiraMusic;
   musics: CapoeiraMusic[];
   deleted: boolean;
+  musicPart: string;
 
-  constructor(private service: CapoeiraMusicService, private serve: CapoeiraMusicClientService) {
+  constructor(private service: CapoeiraMusicClientService) {
 
   }
 
   ngOnInit() {
-    this.getById(1);
     this.getAll();
-    this.test();
+    this.initMusic();
+  }
+  private initMusic() {
+    this.music = new CapoeiraMusic();
+    this.music.musicParts = [];
   }
 
-  test() {
-    console.log('Controller');
-    this.serve.getAll().subscribe(data => {
-      console.log(data);
-    });
+  addMusicParts() {
+    const musicPart = new MusicPart();
+    musicPart.musicPart = this.musicPart;
+    this.music.musicParts.push(musicPart);
+    this.musicPart = '';
   }
 
-  create(music) {
-    this.service.create(music)
+  create() {
+    console.log(this.music);
+    this.service.create(this.music)
     .subscribe(
       response => {
-        this.music = response.json();
+        this.musics.push(response);
+        this.initMusic();
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {
@@ -49,11 +55,11 @@ export class CapoeiraMusicComponent implements OnInit {
       });
   }
 
-  update(music) {
-    this.service.update(music)
+  update() {
+    this.service.update(this.music)
     .subscribe(
       response => {
-        this.music = response.json();
+        this.music = response;
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {
@@ -68,7 +74,7 @@ export class CapoeiraMusicComponent implements OnInit {
     this.service.getById(id)
     .subscribe(
       response => {
-        this.music = response.json();
+        this.music = response;
     },
     (error: CommonError) => {
       if (error instanceof CommonNotFoundError) {
@@ -83,7 +89,7 @@ export class CapoeiraMusicComponent implements OnInit {
     this.service.getAll()
     .subscribe(
       response => {
-        this.musics = response.json();
+        this.musics = response;
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {
@@ -98,7 +104,7 @@ export class CapoeiraMusicComponent implements OnInit {
     this.service.delete(id)
     .subscribe(
       response => {
-        this.deleted = response.json();
+        this.deleted = response;
       },
       (error: CommonError) => {
         if (error instanceof CommonNotFoundError) {

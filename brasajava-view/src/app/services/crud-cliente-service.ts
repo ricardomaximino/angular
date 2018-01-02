@@ -13,12 +13,12 @@ export class CrudClientService <T> {
      }
 
      create(resource): Observable<T> {
-        return this.http.post<T>(this.url, JSON.stringify(resource))
+        return this.http.post<T>(this.url, resource)
         .catch(this.handleError);
      }
 
      update(resource): Observable<T> {
-         return this.http.put<T>(this.url, JSON.stringify(resource))
+         return this.http.put<T>(this.url, resource)
          .catch(this.handleError);
      }
 

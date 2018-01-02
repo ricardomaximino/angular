@@ -8,4 +8,12 @@
         <p *ngFor="let part of musica.musicParts">{{part.musicPart}}</p>
       </div>
   </div>
+  <input type="text" [(ngModel)]="music.name">
+  <input type="text" [(ngModel)]="musicPart" (keyup.enter)="addMusicParts()">
+  <div *ngIf="music">
+    <h1>{{music.name}}</h1>
+    <div *ngFor="let part of music.musicParts">
+      <p>{{part.musicPart}}</p>
+    </div>
+    <button (click)="create()">Create</button>
 

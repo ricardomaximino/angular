@@ -13,12 +13,12 @@ export class CrudService {
      }
 
      create(resource) {
-        return this.http.post(this.url, JSON.stringify(resource))
+        return this.http.post(this.url, resource)
         .catch(this.handleError);
      }
 
      update(resource) {
-         return this.http.put(this.url, JSON.stringify(resource))
+         return this.http.put(this.url, resource)
          .catch(this.handleError);
      }
 
