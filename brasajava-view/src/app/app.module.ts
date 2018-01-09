@@ -15,13 +15,23 @@ import { CapoeiraMemberComponent } from './capoeira-member/capoeira-member.compo
 import { CapoeiraMusicService } from './services/capoeira-music.service';
 import { CapoeiraMemberService } from './services/capoeira-member.service';
 import { CapoeiraMusicClientService } from './services/capoeira-music-client.service';
+import { ProfileComponent } from './profile/profile.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
+import { TableComponent } from './table/table.component';
+import { NegativoPipe } from './negativo.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CapoeiraMusicComponent,
-    CapoeiraMemberComponent
+    CapoeiraMemberComponent,
+    ProfileComponent,
+    NavBarComponent,
+    LoginComponent,
+    TableComponent,
+    NegativoPipe
   ],
   imports: [
     BrowserModule,

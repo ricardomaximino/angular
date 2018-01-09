@@ -1,0 +1,8 @@
+<div *ngIf="!logged">
+    <input type="text" [(ngModel)]="email" placeholder="e-mail"> 
+    <input type="text" [(ngModel)]="password" placeholder="password">
+    <button class="btn btn-primary" (click)="login()">login</button>
+</div>
+<div *ngIf="logged">
+    <button>logout</button>
+</div>

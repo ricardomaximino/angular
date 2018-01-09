@@ -1,0 +1,26 @@
+<div *ngIf="table">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th *ngIf="table.buttonType"></th>
+        <th scope="col" *ngFor="let column of table.header">{{column.value}}</th>
+        <th *ngIf="table.actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of table.data; let id = index;">
+        <th *ngIf="table.buttonType === 'radio'"><input type="radio"></th>
+        <th *ngIf="table.buttonType === 'check'"><input type="checkBox"></th>
+        <td *ngFor="let columData of data" class="{{columData.class}}">
+          {{columData.value}}</td>
+        <td *ngIf="table.actions" >
+          <span *ngFor="let action of table.actions" style="padding-right:5px;">{{action.value}}</span> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="alert alert-secondary row" *ngIf="table.pagination">
+  <div *ngIf="table.pagination.anterior" class="col-md-6"><button class="btn btn-primary">anterior</button></div>
+  <div *ngIf="table.pagination.siguiente"class="col-md-6"><button class="btn btn-primary">siguiente</button></div>
+</div>
