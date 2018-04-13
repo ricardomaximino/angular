@@ -19,11 +19,10 @@ import { PostComponent } from './post/post.component';
     PostComponent
   ],
   imports: [
-    BrowserModule
-  ],
-  providers: [
+    BrowserModule,
     AppRoutingModule
   ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
