@@ -20,6 +20,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { TableComponent } from './table/table.component';
 import { NegativoPipe } from './negativo.pipe';
+import { MusicComponent } from './music/music.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { NegativoPipe } from './negativo.pipe';
     NavBarComponent,
     LoginComponent,
     TableComponent,
-    NegativoPipe
+    NegativoPipe,
+    MusicComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
