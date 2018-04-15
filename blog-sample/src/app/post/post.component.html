@@ -1,15 +1,24 @@
-<app-banner [bannerConfig]="bannerConfig"></app-banner>>
+<app-banner [bannerConfig]="bannerConfig"></app-banner>
 
 <!-- Post Content -->
-<article>
+<button (click)="edit()">Edit</button>
+<button (click)="create()">Create</button>
+<article *ngIf="!editing">
   <div class="container">
     <div class="row">
-        <textarea  (keyup)="parse($event.target.value)"></textarea>
       <div class="col-lg-8 col-md-10 mx-auto" [innerHtml]="html">
-       
       </div>
     </div>
   </div>
 </article>
+<article *ngIf="editing">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <app-form [formConfig]="formConfig" (formsubmit)="formsubmit($event)"></app-form>
+        </div>
+      </div>
+    </div>
+  </article>
 
 <hr>

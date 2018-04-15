@@ -10,6 +10,8 @@ import { FormConfig, ButtonConfig, InputConfig, TextareaConfig } from '../compon
 export class ContactComponent implements OnInit {
   formConfig: FormConfig;
   bannerConfig: BannerConfig;
+  message = 'Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!';
+
   constructor() { }
 
   ngOnInit() {
@@ -36,6 +38,11 @@ export class ContactComponent implements OnInit {
     textarea.numberOfLines = '5';
     this.formConfig.textarea = textarea;
 
+  }
+
+  formSubmit(data) {
+    console.log('receveid');
+    console.log(data);
   }
 
 }

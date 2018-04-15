@@ -19,3 +19,8 @@ export class TextareaConfig extends InputConfig {
 export class ButtonConfig {
     constructor(public id?: string, public label?: string) {}
 }
+
+export class FormData {
+    public inputs: string[];
+    public textarea: string;
+}

@@ -6,14 +6,9 @@ import { BannerConfig } from './banner-model.component';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent {
 
   myStyle = true;
   @Input() bannerConfig: BannerConfig;
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.bannerConfig);
-  }
 
 }
