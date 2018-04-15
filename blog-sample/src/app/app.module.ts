@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
@@ -11,6 +12,8 @@ import { PostComponent } from './post/post.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { FootComponent } from './component/foot/foot.component';
 import { BannerComponent } from './component/banner/banner.component';
+import { MarkDownService } from './service/mark-down/mark-down.service';
+import { FormComponent } from './component/form/form.component';
 
 
 @NgModule({
@@ -22,13 +25,15 @@ import { BannerComponent } from './component/banner/banner.component';
     PostComponent,
     NavBarComponent,
     FootComponent,
-    BannerComponent
+    BannerComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
-  providers: [ ],
+  providers: [MarkDownService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

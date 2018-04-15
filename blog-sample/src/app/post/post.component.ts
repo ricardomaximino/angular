@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerConfig } from '../component/banner/banner-model.component';
+import { MarkDownService } from '../service/mark-down/mark-down.service';
 
 @Component({
   selector: 'app-post',
@@ -11,12 +12,19 @@ export class PostComponent implements OnInit {
   bannerConfig: BannerConfig;
   body = [];
   el: any;
-  constructor() { }
+  html: string;
+
+  constructor(private service: MarkDownService) { }
 
   ngOnInit() {
     this.setBody();
     this.configBanner();
     console.log(this.body);
+  }
+
+  parse(text) {
+    this.html = this.service.convert(text);
+    console.log(this.html);
   }
 
   configBanner() {
@@ -25,6 +33,7 @@ export class PostComponent implements OnInit {
     this.bannerConfig.title = 'Title';
     this.bannerConfig.message = 'Message';
   }
+
   setBody() {
     this.el = new TextElement('p', 'Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman s earth, if free men make it, will be truly round: a globe in practice, not in theory.');
     this.body.push(this.el);
