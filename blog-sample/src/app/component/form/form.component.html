@@ -1,38 +1,27 @@
 <form name="sentMessage" id="contactForm" novalidate *ngIf="formConfig">
- 
+  <div *ngFor="let input of formConfig.inputs; let index = index;">
     <div class="control-group">
       <div class="form-group floating-label-form-group controls">
-        <label>{{formConfig.inputs[0].label}}</label>
-        <input type="text" class="form-control"  [(ngModel)]="input0" placeholder="{{formConfig.inputs[0].placeholder}}" id="{{formConfig.inputs[0].id}}" name="{{formConfig.inputs[0].id}}">
+        <label>{{input.label}}</label>
+        <input type="text" class="form-control"  [(ngModel)]="inputs[index]" placeholder="{{input.placeholder}}" id="{{input.id}}" name="{{input.id}}">
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>{{formConfig.inputs[1].label}}</label>
-        <input type="text" class="form-control"  [(ngModel)]="input1" placeholder="{{formConfig.inputs[1].placeholder}}" id="{{formConfig.inputs[1].id}}" name="{{formConfig.inputs[1].id}}">
-        <p class="help-block text-danger"></p>
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>{{formConfig.inputs[2].label}}</label>
-        <input type="text" class="form-control"  [(ngModel)]="input2" placeholder="{{formConfig.inputs[2].placeholder}}" id="{{formConfig.inputs[2].id}}" name="{{formConfig.inputs[2].id}}">
-        <p class="help-block text-danger"></p>
-      </div>
-    </div>
+  </div>  
   
-  
-    <div class="control-group" *ngIf="formConfig.textarea">
+  <div *ngFor="let textarea of formConfig.textareas; let index = index;">
+    <div class="control-group">
       <div class="form-group floating-label-form-group controls">
-        <label>{{formConfig.textarea.label}}</label>
-        <textarea rows="{{formConfig.textarea.numberOfLines}}" class="form-control" [(ngModel)]="textarea" placeholder="{{formConfig.textarea.placeholder}}" id="{{formConfig.textarea.id}}" name="{{formConfig.textarea.id}}"></textarea>
+        <label>{{textarea.label}}</label>
+        <textarea rows="{{textarea.numberOfLines}}" class="form-control" [(ngModel)]="textareas[index]" placeholder="{{textarea.placeholder}}" id="{{textarea.id}}" name="{{textarea.id}}"></textarea>
         <p class="help-block text-danger"></p>
       </div>
     </div>
-    <br>
-    <div id="success"></div>
-    <div class="form-group">
-      <button (click)="submit()" class="btn btn-primary" id="{{formConfig.button.id}}">{{formConfig.button.label}}</button>
-    </div>
+  </div>
+
+  <br>
+  <div id="success"></div>
+  <div class="form-group">
+    <button (click)="submit()" class="btn btn-primary" id="{{formConfig.button.id}}">{{formConfig.button.label}}</button>
+  </div>
   </form>

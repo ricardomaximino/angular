@@ -9,21 +9,22 @@ import { FormConfig, FormData } from './form.component.model';
 export class FormComponent implements OnInit {
   @Input() formConfig: FormConfig;
   @Output() formsubmit = new EventEmitter();
-  input0: string;
-  input1: string;
-  input2: string;
-  textarea: string;
-
-  constructor() { }
+  inputs = [];
+  textareas = [];
 
   ngOnInit() {
+    for (let i = 0; i < this.formConfig.inputs.length; i++) {
+      this.inputs.push('');
+    }
+    for (let i = 0; i < this.formConfig.textareas.length; i++) {
+      this.textareas.push('');
+    }
   }
 
   submit() {
     const data = new FormData();
-    data.inputs = [this.input0, this.input1, this.input2];
-    data.textarea = this.textarea;
-    console.log('submited');
+    data.inputs = this.inputs;
+    data.textareas = this.textareas;
     this.formsubmit.emit(data);
   }
 }

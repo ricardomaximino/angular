@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit {
     ];
     const textarea = new TextareaConfig('message', 'Message', 'Type here your message...', 'Type your message.');
     textarea.numberOfLines = '5';
-    this.formConfig.textarea = textarea;
+    this.formConfig.textareas = [textarea];
 
   }
 

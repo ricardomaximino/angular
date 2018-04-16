@@ -38,17 +38,19 @@ export class PostComponent implements OnInit {
     this.formConfig.button = new ButtonConfig('button', 'Save');
     this.formConfig.inputs = [
       new InputConfig('author', 'Author', 'Author Name', 'Type the author name'),
-      new InputConfig('title', 'Title', 'Title of the article', 'Type the title of the article.'),
-      new InputConfig('snip', 'Snip Text', 'Type here the snip Text', 'Type the snip Text'),
+      new InputConfig('title', 'Title', 'Title of the article', 'Type the title of the article.')
     ];
-    const textarea = new TextareaConfig('post', 'Post', 'Type here your post', 'Type the post');
-    this.formConfig.textarea = textarea;
+    const textarea1 = new TextareaConfig('snip', 'Snip Text', 'Type here the snip Text', 'Type the snip Text');
+    textarea1.numberOfLines = '5';
+    const textarea2 = new TextareaConfig('text', 'Text', 'Type here your text', 'Type the text');
+    textarea2.numberOfLines = '25';
+    this.formConfig.textareas = [textarea1, textarea2];
   }
 
   formsubmit(data) {
     this.formData = data;
     console.log(data);
-    this.parseMarkedDownTextToHtlm(this.formData.textarea);
+    this.parseMarkedDownTextToHtlm(this.formData.textareas[1]);
     this.editing = false;
   }
 

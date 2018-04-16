@@ -1,6 +1,6 @@
 export class FormConfig {
     public inputs: InputConfig[];
-    public textarea: TextareaConfig;
+    public textareas: TextareaConfig[];
     public button: ButtonConfig;
 }
 
@@ -22,5 +22,5 @@ export class ButtonConfig {
 
 export class FormData {
     public inputs: string[];
-    public textarea: string;
+    public textareas: string[];
 }
