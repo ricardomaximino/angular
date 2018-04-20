@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerConfig } from '../component/banner/banner-model.component';
+import { BannerConfig } from '../component/banner/banner.component.model';
 
 @Component({
   selector: 'app-about',
@@ -17,8 +17,8 @@ export class AboutComponent implements OnInit {
 
   configBanner() {
     this.bannerConfig.image = '../assets/image/about-bg.jpg';
-    this.bannerConfig.title = 'Title';
-    this.bannerConfig.message = 'Message';
+    this.bannerConfig.title = 'About';
+    this.bannerConfig.message = 'Every thing about me';
   }
 
 }

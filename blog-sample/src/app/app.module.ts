@@ -14,6 +14,8 @@ import { FootComponent } from './component/foot/foot.component';
 import { BannerComponent } from './component/banner/banner.component';
 import { MarkDownService } from './service/mark-down/mark-down.service';
 import { FormComponent } from './component/form/form.component';
+import { PostService } from './service/post/post.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -26,14 +28,18 @@ import { FormComponent } from './component/form/form.component';
     NavBarComponent,
     FootComponent,
     BannerComponent,
-    FormComponent
+    FormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [MarkDownService],
+  providers: [
+    MarkDownService,
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

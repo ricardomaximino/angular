@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerConfig } from '../component/banner/banner-model.component';
+import { BannerConfig } from '../component/banner/banner.component.model';
 import { MarkDownService } from '../service/mark-down/mark-down.service';
 import { FormConfig, ButtonConfig, InputConfig, FormData, TextareaConfig } from '../component/form/form.component.model';
+import { PostService } from '../service/post/post.service';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from './post.component.model';
 
 @Component({
   selector: 'app-post',
@@ -15,12 +18,18 @@ export class PostComponent implements OnInit {
   formData: FormData;
   html: string;
   editing = false;
+  post: Post;
 
-  constructor(private service: MarkDownService) { }
+  constructor(private service: MarkDownService, private postService: PostService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.configBanner();
     this.configForm();
+     this.route.params.subscribe(param => {
+      this.post = this.postService.getDataById(param.id);
+      console.log(this.post + ' param: ' + param.id);
+      this.parseMarkedDownTextToHtlm(this.post.text);
+    });
   }
 
   parseMarkedDownTextToHtlm(text) {
@@ -30,8 +39,8 @@ export class PostComponent implements OnInit {
   configBanner() {
     this.bannerConfig = new BannerConfig();
     this.bannerConfig.image = '../assets/image/post-bg.jpg';
-    this.bannerConfig.title = 'Title';
-    this.bannerConfig.message = 'Message';
+    this.bannerConfig.title = 'Post';
+    this.bannerConfig.message = 'Enjoy reading this post';
   }
   configForm() {
     this.formConfig = new FormConfig();

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BannerConfig } from '../component/banner/banner-model.component';
+import { BannerConfig } from '../component/banner/banner.component.model';
 import { FormConfig, ButtonConfig, InputConfig, TextareaConfig } from '../component/form/form.component.model';
 
 @Component({
@@ -22,8 +22,8 @@ export class ContactComponent implements OnInit {
   configBanner() {
     this.bannerConfig = new BannerConfig();
     this.bannerConfig.image = '../assets/image/contact-bg.jpg';
-    this.bannerConfig.title = 'Title';
-    this.bannerConfig.message = 'Message';
+    this.bannerConfig.title = 'Contact';
+    this.bannerConfig.message = 'Do not doubt, contact me now';
   }
 
   configForm() {
