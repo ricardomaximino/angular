@@ -3,7 +3,7 @@ import { Post, Author } from '../../post/post.component.model';
 
 @Injectable()
 export class PostService {
-  posts = [];
+  posts: Post[];
   post: Post;
 
   constructor() {
@@ -14,11 +14,11 @@ export class PostService {
     return this.posts;
   }
 
-  getDataById(id: number): Post {
+  getDataById(id: number) {
     for (let i = 0; i < this.posts.length; i++) {
-      if (this.posts[i].id === id) {
+      // tslint:disable-next-line:triple-equals
+      if (this.posts[i].id == id) {
           this.post = this.posts[i];
-          console.log(this.post);
           break;
       }
     }
@@ -55,8 +55,8 @@ export class PostService {
       '### We predict too much for the next year and yet far too little for the next ten.',
       '## Science has not yet mastered prophecy\r\n' +
       '### We predict too much for the next year and yet far too little for the next ten.\r\n' +
-      '**We predict too much for the next year and yet far too little for the next ten.\r\n**' +
-      '**We predict too much for the next year and yet far too little for the next ten.\r\n**' +
+      '** We predict too much for the next year and yet far too little for the next ten. **\r\n' +
+      '** We predict too much for the next year and yet far too little for the next ten. **\r\n' +
       '**We predict too much for the next year and yet far too little for the next ten.\r\n**' +
       '**We predict too much for the next year and yet far too little for the next ten.\r\n**' +
       '**We predict too much for the next year and yet far too little for the next ten.\r\n**' +

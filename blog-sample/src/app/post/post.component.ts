@@ -19,15 +19,24 @@ export class PostComponent implements OnInit {
   html: string;
   editing = false;
   post: Post;
+  title: string;
+  author: string;
+  snipText: string;
+  text: string;
+  inputs = [];
+  textareas = [];
 
-  constructor(private service: MarkDownService, private postService: PostService, private route: ActivatedRoute) { }
+  constructor(
+    private service: MarkDownService,
+    private postService: PostService,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.configBanner();
     this.configForm();
-     this.route.params.subscribe(param => {
+    this.route.params.subscribe(param => {
       this.post = this.postService.getDataById(param.id);
-      console.log(this.post + ' param: ' + param.id);
+      this.setVariablesWithThePostValues();
       this.parseMarkedDownTextToHtlm(this.post.text);
     });
   }
@@ -63,12 +72,23 @@ export class PostComponent implements OnInit {
     this.editing = false;
   }
 
+  setVariablesWithThePostValues() {
+    this.author = this.post.author.name;
+    this.title = this.post.title;
+    this.snipText = this.post.snipText;
+    this.text = this.post.text;
+  }
+
   edit() {
+    this.inputs.push(this.author);
+      this.inputs.push(this.title);
+      this.textareas.push(this.snipText);
+      this.textareas.push(this.text);
     this.editing = true;
   }
 
-  create() {
-    this.editing = true;
+  isOwner() {
+    return true;
   }
 
 }

@@ -1,8 +1,7 @@
 <app-banner [bannerConfig]="bannerConfig"></app-banner>
 
 <!-- Post Content -->
-<button (click)="edit()">Edit</button>
-<button (click)="create()">Create</button>
+<button *ngIf="isOwner()" (click)="edit()">Edit</button>
 <article *ngIf="!editing">
   <div class="container">
     <div class="row">
@@ -15,7 +14,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <app-form [formConfig]="formConfig" (formsubmit)="formsubmit($event)"></app-form>
+          <app-form 
+          [formConfig]="formConfig" 
+          [inputs]="inputs"
+          [textareas]="textareas"
+          (formsubmit)="formsubmit($event) "></app-form>
         </div>
       </div>
     </div>
