@@ -16,8 +16,7 @@ export class PostService {
 
   getDataById(id: number) {
     for (let i = 0; i < this.posts.length; i++) {
-      // tslint:disable-next-line:triple-equals
-      if (this.posts[i].id == id) {
+      if (this.posts[i].id === id) {
           this.post = this.posts[i];
           break;
       }

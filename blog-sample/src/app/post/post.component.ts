@@ -20,7 +20,6 @@ export class PostComponent implements OnInit {
   editing = false;
   post: Post;
   title: string;
-  author: string;
   snipText: string;
   text: string;
   inputs = [];
@@ -33,9 +32,8 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     this.configBanner();
-    this.configForm();
     this.route.params.subscribe(param => {
-      this.post = this.postService.getDataById(param.id);
+      this.post = this.postService.getDataById(Number(param.id));
       this.setVariablesWithThePostValues();
       this.parseMarkedDownTextToHtlm(this.post.text);
     });
@@ -55,7 +53,6 @@ export class PostComponent implements OnInit {
     this.formConfig = new FormConfig();
     this.formConfig.button = new ButtonConfig('button', 'Save');
     this.formConfig.inputs = [
-      new InputConfig('author', 'Author', 'Author Name', 'Type the author name'),
       new InputConfig('title', 'Title', 'Title of the article', 'Type the title of the article.')
     ];
     const textarea1 = new TextareaConfig('snip', 'Snip Text', 'Type here the snip Text', 'Type the snip Text');
@@ -63,6 +60,10 @@ export class PostComponent implements OnInit {
     const textarea2 = new TextareaConfig('text', 'Text', 'Type here your text', 'Type the text');
     textarea2.numberOfLines = '25';
     this.formConfig.textareas = [textarea1, textarea2];
+
+    this.inputs.push(this.title);
+    this.textareas.push(this.snipText);
+    this.textareas.push(this.text);
   }
 
   formsubmit(data) {
@@ -73,22 +74,22 @@ export class PostComponent implements OnInit {
   }
 
   setVariablesWithThePostValues() {
-    this.author = this.post.author.name;
     this.title = this.post.title;
     this.snipText = this.post.snipText;
     this.text = this.post.text;
   }
 
   edit() {
-    this.inputs.push(this.author);
-      this.inputs.push(this.title);
-      this.textareas.push(this.snipText);
-      this.textareas.push(this.text);
+    this.configForm();
     this.editing = true;
   }
 
   isOwner() {
     return true;
+  }
+
+  isEditable() {
+    return !this.editing;
   }
 
 }

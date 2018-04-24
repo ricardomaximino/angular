@@ -10,13 +10,20 @@ import { FormConfig, ButtonConfig, InputConfig, TextareaConfig } from '../compon
 export class ContactComponent implements OnInit {
   formConfig: FormConfig;
   bannerConfig: BannerConfig;
-  message = 'Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!';
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  inputs: any[];
+  textareas: any[];
 
   constructor() { }
 
   ngOnInit() {
     this.configBanner();
     this.configForm();
+    this.inputs = [this.name, this.email, this.phone];
+    this.textareas = [this.message];
   }
 
   configBanner() {
@@ -35,7 +42,7 @@ export class ContactComponent implements OnInit {
       new InputConfig('phone', 'Phone', '333 555 999', 'Type your phone.')
     ];
     const textarea = new TextareaConfig('message', 'Message', 'Type here your message...', 'Type your message.');
-    textarea.numberOfLines = '5';
+    textarea.numberOfLines = '10';
     this.formConfig.textareas = [textarea];
 
   }

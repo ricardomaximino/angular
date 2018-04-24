@@ -16,6 +16,8 @@ import { MarkDownService } from './service/mark-down/mark-down.service';
 import { FormComponent } from './component/form/form.component';
 import { PostService } from './service/post/post.service';
 import { ProfileComponent } from './profile/profile.component';
+import { UserService } from './service/user/user.service';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ProfileComponent } from './profile/profile.component';
     FootComponent,
     BannerComponent,
     FormComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [
     MarkDownService,
-    PostService
+    PostService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
