@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,10 @@ import { AuthService } from './service/auth/auth.service';
 import { LoginService } from './service/http/login.service';
 
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +47,16 @@ import { LoginService } from './service/http/login.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        headerName: 'Authorization',
+        authScheme: 'Bearer ',
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['localhost:8080/auth/']
+      }
+    })
   ],
   providers: [
     MarkDownService,

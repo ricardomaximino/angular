@@ -1,5 +1,6 @@
-
-
+<div class="row" *ngIf="hasAuthError">
+  <div class="alert alert-error" style="left: calc(50% - 150px); width:300px; top: 18%; position: absolute;">Wrong username or password</div>
+</div>
 <section class="row" style="margin-top: 10%;">
   <div class="text-center col" style="padding-top: 20px; position: absolute; width:400px; height:400px; top: calc(50% - 200px); left: calc(50% - 200px); border: 1px solid #000;">
       <form class="form-signin">
