@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         if (this.rememberme) {
           this.authService.setToken(response['token']);
-          console.log(this.authService.decodeToken());
         }
         this.hasAuthError = false;
         this.router.navigate(['/home']);

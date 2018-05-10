@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
 import { User, ProfileConfig } from '../../profile/profile.component.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import { CommonError } from '../../error/common-error';
 
 @Injectable()
 export class UserService {
   user: User;
 
-  constructor() { }
+  constructor() {
+    this.createUser();
+   }
 
-  getLoggedUser() {
+  getLoggedUser(): Observable<User> {
+    return Observable.create(observer => {
+      observer.next(this.user);
+    }).catch(this.handleError);
+  }
+
+  createUser() {
     this.user = new User();
     this.user.id = 1;
     this.user.name = 'Elena';
@@ -19,4 +31,7 @@ export class UserService {
     return this.user;
   }
 
+  private handleError(error: Response) {
+    return Observable.throw(new CommonError(error));
+  }
 }

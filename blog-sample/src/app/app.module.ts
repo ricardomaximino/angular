@@ -47,16 +47,7 @@ export function tokenGetter() {
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        headerName: 'Authorization',
-        authScheme: 'Bearer ',
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['localhost:8080/auth/']
-      }
-    })
+    AppRoutingModule
   ],
   providers: [
     MarkDownService,
