@@ -10,8 +10,8 @@ import { UnauthorizedError } from '../../error/unauthorized-error';
 
   @Injectable()
   export class LoginService {
-    private GET_TOKEN_URL = 'http://localhost:8080/auth';
-    private REFRESH_TOKEN_URL = 'http://localhost:8080/refresh';
+    private GET_TOKEN_URL = 'http://localhost:9090/auth';
+    private REFRESH_TOKEN_URL = 'http://localhost:9090/refresh';
     private LOG_OUT_URL = '';
     private token: string;
 

@@ -6,9 +6,14 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { AlwaysActivate } from './router-guard/can-activate/can-activate.alway.guard';
 
 const routes: Routes = [
-    {path: '', component: LoginComponent},
+    {
+      path: '',
+      component: LoginComponent,
+      canActivate: [AlwaysActivate]
+    },
     {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'post/:id', component: PostComponent},
