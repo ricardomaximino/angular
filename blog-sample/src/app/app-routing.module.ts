@@ -6,13 +6,15 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-import { AlwaysActivate } from './router-guard/can-activate/can-activate.alway.guard';
+import { AlwaysActivate } from './router-guard/can-activate/can-activate.always.guard';
+import { AlwaysDeactivate } from './router-guard/can-deactivate/can-deactivate.always.guard';
 
 const routes: Routes = [
     {
       path: '',
       component: LoginComponent,
-      canActivate: [AlwaysActivate]
+      canActivate: [AlwaysActivate],
+      canDeactivate: [AlwaysDeactivate]
     },
     {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},

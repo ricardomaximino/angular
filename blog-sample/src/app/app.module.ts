@@ -23,6 +23,8 @@ import { CommonErrorHandler } from './error/common-error-handler';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { AuthService } from './service/auth/auth.service';
 import { LoginService } from './service/http/login.service';
+import { AlwaysActivate } from './router-guard/can-activate/can-activate.always.guard';
+import { AlwaysDeactivate } from './router-guard/can-deactivate/can-deactivate.always.guard';
 
 
 export function tokenGetter() {
@@ -62,6 +64,8 @@ export function tokenGetter() {
     UserService,
     AuthService,
     LoginService,
+    AlwaysActivate,
+    AlwaysDeactivate,
     {provide: ErrorHandler, useClass: CommonErrorHandler},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],
